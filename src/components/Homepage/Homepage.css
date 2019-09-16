@@ -1,0 +1,21 @@
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.app-logo{
+    width: 200px;
+    border: 4px solid white;
+    border-radius: 50%;
+    -webkit-animation: fadein 2s;
+    -moz-animation: fadein 2s;
+    -ms-animation: fadein 2s;
+    animation: fadein 3s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
