@@ -4,6 +4,12 @@ import './DoggoList.css';
 class DoggoList extends Component {
     render() {
         const doggos = this.props.dogs;
+        if (!doggos || doggos.length === 0) {
+            return (
+                <div>There are no doggos ;(</div>
+            )
+        }
+
         return (
             <div className='dogs-container'>
             {doggos.map(function(dog, index) {
