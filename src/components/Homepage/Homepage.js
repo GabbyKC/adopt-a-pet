@@ -5,6 +5,7 @@ import './Homepage.css';
 
 // custom components:
 import DoggoList from '../DoggoList/DoggoList';
+import Org from '../Organisations/Org';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
@@ -22,7 +23,7 @@ class Homepage extends Component {
     fetchData = () => {
         const client = new Client({apiKey: "Puy3fIqnfC6zp1ZRxwCQXHJ9zPaFWetKggFX78leCV7WZtQa61", secret: "qCycVDErMAKaQsKaSpMnabPW65zFue0SQQAyrVFz"});
 
-        client.animal.search({type: 'dog', location: 'alaska', status: 'adoptable'})
+        client.animal.search({type: 'cat'&'dog', location: 'hawaii', status: 'adoptable'})
             .then((response) => {
                 this.setState({
                     isLoading: false,
@@ -47,6 +48,7 @@ class Homepage extends Component {
                     <Header />
 
                     <DoggoList dogs={this.state.dogs}/>
+                    {/*<Org dogs={this.state.dogs} />*/}
 
                     <Footer />
                 </div>
