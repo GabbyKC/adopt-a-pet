@@ -10,7 +10,9 @@ class DoggoList extends Component {
                 let hasPhotos = dog.photos !== undefined && dog.photos[0].small !== undefined
                 return (
                     <div key={dog.id} className='dog-box'>
-                        { hasPhotos ? <img src={dog.photos[0].small} alt="doggo" /> : ''}
+                        <div className='image-container'>
+                            { hasPhotos ? <img src={dog.photos[0].small} alt="doggo" /> : ''}
+                        </div>
                         <p className='dog-name'>{dog.name}</p>
                     </div>
                 )

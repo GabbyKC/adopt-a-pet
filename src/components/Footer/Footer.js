@@ -8,10 +8,18 @@ class Footer extends Component {
     render() {
         return (
             <div className='footer'>
-                <div><FontAwesomeIcon icon={faHome} /></div>
-                <div><FontAwesomeIcon icon={faAddressBook} /></div>
-                <div><FontAwesomeIcon icon={faComment} /></div>
 
+                <Link to="/"><FontAwesomeIcon icon={faHome} /></Link>
+
+                <a>
+                    <FontAwesomeIcon icon={faHome} />
+                </a>
+                <a>
+                    <FontAwesomeIcon icon={faAddressBook} />
+                </a>
+                <a>
+                    <FontAwesomeIcon icon={faComment} />
+                </a>
             </div>
         )
     }

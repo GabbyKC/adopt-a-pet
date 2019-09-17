@@ -16,8 +16,12 @@
 
 .dog-box {
     margin: 10px;
-    border: 2px solid #834f95;
-    background-color: white;
+    border: 1px solid #834f95;
+    background-color: #f1eaf7;
+}
+
+.image-container {
+    background-color: #dab3fa;
 }
 
 .dog-box img {
@@ -25,10 +29,13 @@
     height: 120px;
     object-fit: contain;
     padding-top: 10px;
+    border: 1px solid white;
+    border-bottom: none;
 }
 
 .dog-name {
     text-align: center;
     color: #834f95;
     font-weight: bold;
+    text-decoration: underline;
 }
