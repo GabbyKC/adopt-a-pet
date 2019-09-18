@@ -3,10 +3,11 @@ import { DOGS_LOADED } from '../constants/action-types';
 
 const client = new Client({apiKey: "WjqoS08v7pRPJ2offXSrIW0RaORTy296kNOjNu7l8O94y0IYTy", secret: "CTMMNXK3b8TcjiNT4GNhzeCqetoF2HZNk5c0mjF0"});
 
-export function getDogs() {
+export function getDogs(page = 1) {
     return function(dispatch) {
-        return client.animal.search({type: 'dog', location: 'hawaii', status: 'adoptable'})
-            .then(response => response.data.animals)
+        console.log('Fetching page', page);
+        return client.animal.search({type: 'dog', location: 'hawaii', status: 'adoptable', page: page})
+            .then(response => response.data)
             .then(json => {
                 dispatch({ type: DOGS_LOADED, payload: json });
             });
