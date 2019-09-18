@@ -7,7 +7,7 @@ class Header extends Component {
     render() {
         return (
             <div>
-                <div className='logo'>Find A Pet <FontAwesomeIcon icon={faPaw} /></div>
+                <div className='logo'>Adopt A Pet <FontAwesomeIcon icon={faPaw} /></div>
                 <div className='filters'>filters go here</div>
             </div>
         )

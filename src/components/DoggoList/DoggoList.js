@@ -7,7 +7,8 @@ class DoggoList extends Component {
         return (
             <div className='dogs-container'>
             {doggos.map(function(dog, index) {
-                let hasPhotos = dog.photos !== undefined && dog.photos[0].small !== undefined
+                console.log('Photos', dog.photos);
+                let hasPhotos = dog.photos.length > 0 && dog.photos[0].small !== undefined
                 return (
                     <div key={dog.id} className='dog-box'>
                         <div className='image-container'>
