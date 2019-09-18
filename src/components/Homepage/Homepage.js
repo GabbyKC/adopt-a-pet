@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from "react-redux";
 
-import client from '../../actions/index';
-import { DOGS_LOADED } from '../../constants/action-types';
+import { getDogs } from '../../actions/index';
 import logo from '../../assets/images/app-logo.jpg';
 import './Homepage.css';
 
@@ -13,30 +12,34 @@ import Footer from '../Footer/Footer';
 
 class Homepage extends Component {
     componentDidMount() {
-        this.props.onLoad(client.Animals.dogs());
+        this.props.onLoad();
     }
 
     render() {
-        return (
-            <div>
-                <Header />
-
-                <DoggoList dogs={this.props.dogs}/>
-                {/*<Org dogs={this.state.dogs} />*/}
-
-                <Footer />
-            </div>
-        );
+        if (this.props.isLoading) {
+            return (
+                <div className='logo-container'>
+                    <img className='app-logo' src={ logo } alt="it broke" />
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    <Header />
+                    <DoggoList dogs={this.props.dogs}/>
+                    <Footer />
+                </div>
+            );
+        }
     }
 }
 
 const mapStateToProps = state => {
-  return { dogs: state.dogs };
+  return { dogs: state.dogs, isLoading: state.isLoading };
 };
 
 const mapDispatchToProps = dispatch => ({
-    onLoad: (payload) =>
-        dispatch({type: DOGS_LOADED, payload})
-})
+    onLoad: () => dispatch(getDogs())
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Homepage);

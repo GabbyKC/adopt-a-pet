@@ -1,14 +1,14 @@
 import { Client } from "@petfinder/petfinder-js";
+import { DOGS_LOADED } from '../constants/action-types';
 
-const client = new Client({apiKey: "Puy3fIqnfC6zp1ZRxwCQXHJ9zPaFWetKggFX78leCV7WZtQa61", secret: "qCycVDErMAKaQsKaSpMnabPW65zFue0SQQAyrVFz"});
+const client = new Client({apiKey: "WjqoS08v7pRPJ2offXSrIW0RaORTy296kNOjNu7l8O94y0IYTy", secret: "CTMMNXK3b8TcjiNT4GNhzeCqetoF2HZNk5c0mjF0"});
 
-const Animals = {
-    dogs: () =>
-        client.animal.search({type: 'cat'&'dog', location: 'hawaii', status: 'adoptable'})
-        .then(response => response.data.animals)
-        .catch(error => error),
-};
-
-export default {
-    Animals
-};
+export function getDogs() {
+    return function(dispatch) {
+        return client.animal.search({type: 'dog', location: 'hawaii', status: 'adoptable'})
+            .then(response => response.data.animals)
+            .then(json => {
+                dispatch({ type: DOGS_LOADED, payload: json });
+            });
+    };
+}
