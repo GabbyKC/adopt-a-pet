@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 import './DoggoList.css';
 
 class DoggoList extends Component {
+    handleClick() {
+        console.log('Clicked!');
+    }
+
     render() {
         const doggos = this.props.dogs;
         if (!doggos || doggos.length === 0) {
@@ -12,10 +16,10 @@ class DoggoList extends Component {
 
         return (
             <div className='dogs-container'>
-            {doggos.map(function(dog, index) {
+            {doggos.map((dog, index) => {
                 let hasPhotos = dog.photos.length > 0 && dog.photos[0].small !== undefined
                 return (
-                    <div key={dog.id} className='dog-box'>
+                    <div dog-id={dog.id} key={dog.id} className='dog-box' onClick={this.handleClick}>
                         <div className='image-container'>
                             { hasPhotos ? <img src={dog.photos[0].small} alt="doggo" /> : ''}
                         </div>
