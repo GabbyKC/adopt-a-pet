@@ -27,19 +27,19 @@ class DoggoList extends Component {
                 loadMore={() => this.props.onLoad(this.props.currentPage)}
                 hasMore={this.props.hasMoreDogs}
                 initialLoad={true}
-                loader={<div className="loader" key={0}>Loading ...</div>}
+                loader={<div className="loader" key={0}>Fetching the doggos ...</div>}
                 useWindow={true}
             >
             <div className='dogs-container'>
 
                     {doggos.map((dog, index) => {
-                        let hasPhotos = dog.photos && dog.photos.length > 0 && dog.photos[0].small !== undefined
+                        let hasPhotos = dog.photos && dog.photos.length > 0 && dog.photos[0].medium !== undefined
                         return (
                             <div dog-id={dog.id} key={dog.id} className='dog-box' onClick={this.handleClick}>
-                                <div className='image-container'>
-                                    { hasPhotos ? <img src={dog.photos[0].small} alt="doggo" /> : ''}
+                                <div>
+                                    { hasPhotos ? <img src={dog.photos[0].medium} alt="doggo" /> : ''}
                                 </div>
-                                <p className='dog-name'>{dog.name}</p>
+                                <div className='dog-name'>{dog.name}</div>
                             </div>
                         )
                     })}
