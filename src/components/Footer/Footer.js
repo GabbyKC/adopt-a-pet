@@ -11,6 +11,7 @@ class Footer extends Component {
             <div className='footer'>
                 <div><Link to ='/'><FontAwesomeIcon icon={faHome} /></Link></div>
                 <div><Link to ='/org'><FontAwesomeIcon icon={faAddressBook} /></Link></div>
+                <div><Link to ='/chat'><FontAwesomeIcon icon={faComment} /></Link></div>
             </div>
         )
     }
