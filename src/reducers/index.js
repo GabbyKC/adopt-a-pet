@@ -1,10 +1,12 @@
 import { DOGS_LOADED } from '../constants/action-types';
+import { ORGS_LOADED} from '../constants/action-types';
 
 const initialState = {
   isLoading: true,
   dogs: [],
   currentPage: 1,
   hasMoreDogs: true,
+  orgs: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -16,6 +18,10 @@ function rootReducer(state = initialState, action) {
             isLoading: false
         };
     }
+    if (action.type === ORGS_LOADED) {
+        return {...state, orgs: state.orgs.concat(action.payload.organizations)}
+
+    };
     return state;
 };
 

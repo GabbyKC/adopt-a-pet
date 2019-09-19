@@ -23,6 +23,7 @@ class DoggoList extends Component {
         //     )
         // }
         return (
+
             <InfiniteScroll
                 loadMore={() => this.props.onLoad(this.props.currentPage)}
                 hasMore={this.props.hasMoreDogs}
@@ -30,6 +31,7 @@ class DoggoList extends Component {
                 loader={<div className="loader" key={0}>Fetching the doggos ...</div>}
                 useWindow={true}
             >
+            <div className='filters'>filters go here</div>
             <div className='dogs-container'>
 
                     {doggos.map((dog, index) => {

@@ -8,7 +8,6 @@ class Header extends Component {
         return (
             <div>
                 <div className='logo'>Adopt A Pet <FontAwesomeIcon icon={faPaw} /></div>
-                <div className='filters'>filters go here</div>
             </div>
         )
     }

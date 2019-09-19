@@ -5,7 +5,7 @@ import './App.css';
 import ScrollToTop from './components/Scroll/ScrollToTop';
 
 import Homepage from './components/Homepage/Homepage';
-import Org from './components/Organisations/Org';
+import OrgPage from './components/Organisations/OrgPage';
 import Chat from './components/Chat/Chat';
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
           <ScrollToTop>
               <div className='container'>
                 <Route exact path="/" component={Homepage} />
-                <Route exact path="/org" component={Org} />
+                <Route exact path="/org" component={OrgPage} />
                 <Route exact path="/chat" component={Chat} />
               </div>
           </ScrollToTop>

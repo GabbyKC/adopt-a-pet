@@ -1,17 +1,15 @@
 import React, {Component} from 'react';
-import './Homepage.css';
 
-// custom components:
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import DoggoList from '../DoggoList/DoggoList';
+import OrgList from './OrgList';
 
-class Homepage extends Component {
+class OrgPage extends Component {
     render() {
         return (
             <div>
                 <Header />
-                <DoggoList />
+                <OrgList />
                 <Footer />
             </div>
         );
@@ -19,4 +17,4 @@ class Homepage extends Component {
 }
 
 
-export default Homepage;
+export default OrgPage;
