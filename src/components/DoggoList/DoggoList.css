@@ -42,7 +42,6 @@
     color: #834f95;
 }
 
-
 @media only screen and (max-width: 500px) {
     .dogs-container {
         flex-direction: column;

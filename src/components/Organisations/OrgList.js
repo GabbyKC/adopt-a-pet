@@ -19,7 +19,7 @@ class OrgList extends Component {
                     <ul>
                     {organizations.map((org, index) => {
                         return (
-                            <li key={org.id}>{org.name}</li>
+                            <li key={org.id}><a href={org.url}>{org.name}</a></li>
                             )
                         })}
                     </ul>
