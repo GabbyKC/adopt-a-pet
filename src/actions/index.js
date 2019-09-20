@@ -1,6 +1,7 @@
 import { Client } from "@petfinder/petfinder-js";
 import { DOGS_LOADED } from '../constants/action-types';
 import { ORGS_LOADED} from '../constants/action-types';
+import { DOGGO_LOADED } from '../constants/action-types';
 
 const client = new Client({apiKey: "WjqoS08v7pRPJ2offXSrIW0RaORTy296kNOjNu7l8O94y0IYTy", secret: "CTMMNXK3b8TcjiNT4GNhzeCqetoF2HZNk5c0mjF0"});
 
@@ -21,6 +22,16 @@ export function getOrgs() {
             .then(response => response.data)
             .then(json => {
                 dispatch({ type: ORGS_LOADED, payload: json });
+            });
+    };
+}
+
+export function getSingleDog(id) {
+    return function(dispatch) {
+        return client.animal.show(id)
+            .then(response => response.data)
+            .then(json => {
+                dispatch({ type: DOGGO_LOADED, payload: json});
             });
     };
 }

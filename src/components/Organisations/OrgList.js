@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import { connect } from "react-redux";
 
-import './OrgList.css';
-
 import { getOrgs } from '../../actions/index';
+
+import './OrgList.css';
 
 class OrgList extends Component {
     componentDidMount() {

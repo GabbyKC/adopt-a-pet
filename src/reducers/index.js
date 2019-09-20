@@ -1,5 +1,6 @@
 import { DOGS_LOADED } from '../constants/action-types';
 import { ORGS_LOADED} from '../constants/action-types';
+import { DOGGO_LOADED} from '../constants/action-types';
 
 const initialState = {
   isLoading: true,
@@ -7,6 +8,7 @@ const initialState = {
   currentPage: 1,
   hasMoreDogs: true,
   orgs: [],
+  singleDoggo: null,
 };
 
 function rootReducer(state = initialState, action) {
@@ -22,6 +24,9 @@ function rootReducer(state = initialState, action) {
         return {...state, orgs: action.payload.organizations}
 
     };
+    if (action.type === DOGGO_LOADED) {
+        return {...state, singleDoggo: action.payload.animal}
+    }
     return state;
 };
 

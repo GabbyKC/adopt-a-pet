@@ -4,20 +4,12 @@ import InfiniteScroll from 'react-infinite-scroller';
 
 import DogCard from '../DogCard/DogCard';
 import { getDogs } from '../../actions/index';
-import logo from '../../assets/images/app-logo.jpg';
 import './DoggoList.css';
 
 class DoggoList extends Component {
 
     render() {
         const doggos = this.props.dogs;
-        // if (this.props.isLoading || (!doggos || doggos.length === 0)) {
-        //     return (
-        //         <div className='logo-container'>
-        //             <img className='app-logo' src={ logo } alt="it broke" />
-        //         </div>
-        //     )
-        // }
         return (
             <InfiniteScroll
                 loadMore={() => this.props.onLoad(this.props.currentPage)}
