@@ -19,7 +19,7 @@ function rootReducer(state = initialState, action) {
         };
     }
     if (action.type === ORGS_LOADED) {
-        return {...state, orgs: state.orgs.concat(action.payload.organizations)}
+        return {...state, orgs: action.payload.organizations}
 
     };
     return state;

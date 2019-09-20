@@ -7,6 +7,7 @@ import ScrollToTop from './components/Scroll/ScrollToTop';
 import Homepage from './components/Homepage/Homepage';
 import OrgPage from './components/Organisations/OrgPage';
 import Chat from './components/Chat/Chat';
+import DogInfo from './components/DogInfo/DogInfo';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <ScrollToTop>
               <div className='container'>
                 <Route exact path="/" component={Homepage} />
+                <Route exact path="/dogs/:dogId" component={DogInfo} />
                 <Route exact path="/org" component={OrgPage} />
                 <Route exact path="/chat" component={Chat} />
               </div>
