@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faComment, faAddressBook } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faComment, faAddressBook, faDog } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 import './Footer.css';
@@ -12,6 +12,7 @@ class Footer extends Component {
                 <div><Link to ='/'><FontAwesomeIcon icon={faHome} /></Link></div>
                 <div><Link to ='/org'><FontAwesomeIcon icon={faAddressBook} /></Link></div>
                 <div><Link to ='/chat'><FontAwesomeIcon icon={faComment} /></Link></div>
+                <div><Link to ='/gifs'><FontAwesomeIcon icon={faDog} /></Link></div>
             </div>
         )
     }

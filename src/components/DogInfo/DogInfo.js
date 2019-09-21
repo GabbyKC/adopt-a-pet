@@ -23,7 +23,6 @@ class DogInfo extends Component {
 
     render() {
         const doggo = this.props.dog;
-        console.log(doggo);
         if (!doggo) {
             return (
                 <div className='info-loader'></div>
@@ -35,7 +34,7 @@ class DogInfo extends Component {
             <div className='info-container'>
                 <Link className='back-arrow' to ='/'><FontAwesomeIcon icon={faArrowCircleLeft} /></Link>
                 <div>
-                    { this.hasPhotos() ? <img src={doggo.photos[0].full} alt="doggo" /> : <img src={missingDoggo} alt="doggo" />}
+                    { this.hasPhotos() ? <img className='dog-info-images' src={doggo.photos[0].full} alt="doggo" /> : <img className='dog-info-images' src={missingDoggo} alt="doggo" />}
                     <p className='introduction'>Henlo! My name is {doggo.name}</p>
                 </div>
 

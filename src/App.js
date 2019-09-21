@@ -5,9 +5,11 @@ import './App.css';
 import ScrollToTop from './components/Scroll/ScrollToTop';
 
 import Homepage from './components/Homepage/Homepage';
+import DogInfo from './components/DogInfo/DogInfo';
 import OrgPage from './components/Organisations/OrgPage';
 import Chat from './components/Chat/Chat';
-import DogInfo from './components/DogInfo/DogInfo';
+import DogGif from './components/DogGif/DogGif';
+
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
                 <Route exact path="/dogs/:dogId" component={DogInfo} />
                 <Route exact path="/org" component={OrgPage} />
                 <Route exact path="/chat" component={Chat} />
+                <Route exact path="/gifs" component={DogGif} />
               </div>
           </ScrollToTop>
       </Router>
