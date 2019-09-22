@@ -3,39 +3,63 @@ import { connect } from "react-redux";
 import InfiniteScroll from 'react-infinite-scroller';
 
 import DogCard from '../DogCard/DogCard';
-import { getDogs } from '../../actions/index';
+import { getDogs, updateFilter } from '../../actions/index';
 import './DoggoList.css';
 
 class DoggoList extends Component {
-
     render() {
         const doggos = this.props.dogs;
+
         return (
-            <InfiniteScroll
-                loadMore={() => this.props.onLoad(this.props.currentPage)}
-                hasMore={this.props.hasMoreDogs}
-                initialLoad={true}
-                loader={<div className="loader" key={0}>Fetching the doggos ...</div>}
-                useWindow={true}
-            >
-            <div className='dogs-container'>
-                {doggos.map((dog, index) => {
-                    return (
-                        <DogCard key={dog.id} dog={dog}/>
-                    )
-                })}
+            <div>
+                <div className='filter-container'>
+                    <div className='filter-header'>Filters: </div>
+                    <select value={this.props.filters.size} onChange={(e) => this.props.updateFilter('size', e.target.value)}>
+                        <option value=''>All Sizes</option>
+                        <option value='small'>Small</option>
+                        <option value='medium'>Medium</option>
+                        <option value='large'>Large</option>
+                        <option value='xlarge'>xLarge</option>
+                    </select>
+
+                    <select value={this.props.filters.age} onChange={(e) => this.props.updateFilter('age', e.target.value)}>
+                        <option value=''>All Ages</option>
+                        <option value='baby'>Baby</option>
+                        <option value='young'>Young</option>
+                        <option value='adult'>Adult</option>
+                        <option value='senior'>Senior</option>
+                    </select>
+                </div>
+                <div>
+                    <InfiniteScroll
+                        loadMore={() => this.props.onLoad(this.props.currentPage, this.props.filters)}
+                        hasMore={this.props.shouldFetchMore}
+                        initialLoad={true}
+                        loader={<div className="loader" key={0}>Fetching doggos...</div>}
+                        useWindow={true}
+                    >
+
+                    <div className='dogs-container'>
+                        {doggos.map((dog, index) => {
+                            return (
+                                <DogCard key={dog.id} dog={dog}/>
+                            )
+                        })}
+                    </div>
+                    </InfiniteScroll>
+                </div>
             </div>
-            </InfiniteScroll>
         )
     }
 }
 
 const mapStateToProps = state => {
-  return { dogs: state.dogs, currentPage: state.currentPage, hasMoreDogs: state.hasMoreDogs };
+    return { dogs: state.dogs, filters: state.filters, currentPage: state.currentPage, shouldFetchMore: state.shouldFetchMore };
 };
 
 const mapDispatchToProps = dispatch => ({
-    onLoad: (pageNumber) => dispatch(getDogs(pageNumber))
+    onLoad: (pageNumber, filters) => dispatch(getDogs(pageNumber, filters)),
+    updateFilter: (field, value) => dispatch(updateFilter(field, value))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DoggoList);

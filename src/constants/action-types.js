@@ -4,3 +4,4 @@ export const DOGGO_LOADED = "DOGGO_LOADED";
 export const GIF_LOADED = "GIF_LOADED";
 export const GIF_CLEAR = "GIF_CLEAR";
 export const DOG_CLEAR = "DOG_CLEAR";
+export const FILTER_UPDATE = "FILTER_UPDATE";

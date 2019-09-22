@@ -72,7 +72,11 @@
         margin-left: auto;
         margin-right: auto;
     }
-    img {
+    .dog-info-images {
         height: 600px;
+        object-fit: contain;
+    }
+    .dog-info-image-container {
+        background-color: #f0c6ee;
     }
 }

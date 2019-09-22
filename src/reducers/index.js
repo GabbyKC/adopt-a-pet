@@ -1,21 +1,25 @@
-import { DOGS_LOADED, ORGS_LOADED, DOGGO_LOADED, DOG_CLEAR, GIF_LOADED, GIF_CLEAR } from '../constants/action-types';
+import { DOGS_LOADED, ORGS_LOADED, DOGGO_LOADED, DOG_CLEAR, GIF_LOADED, GIF_CLEAR, FILTER_UPDATE } from '../constants/action-types';
 
 const initialState = {
   dogs: [],
   currentPage: 1,
-  hasMoreDogs: true,
+  shouldFetchMore: true,
   orgs: [],
   singleDoggo: null,
   dogGif: null,
+  filters: {
+      size: '',
+      age: '',
+  },
 };
 
 function rootReducer(state = initialState, action) {
     if (action.type === DOGS_LOADED) {
         return {...state,
-            dogs: state.dogs.concat(action.payload.animals),
+            dogs: action.payload.replace ? action.payload.animals : state.dogs.concat(action.payload.animals),
             currentPage: action.payload.pagination.current_page + 1,
-            hasMoreDogs: action.payload.pagination.current_page < action.payload.pagination.total_pages,
-        };
+            shouldFetchMore: action.payload.pagination.current_page < action.payload.pagination.total_pages,
+        }
     }
     if (action.type === ORGS_LOADED) {
         return {...state, orgs: action.payload.organizations}
@@ -31,6 +35,17 @@ function rootReducer(state = initialState, action) {
     }
     if (action.type === DOG_CLEAR ) {
         return {...state, singleDoggo: null}
+    }
+    if (action.type === FILTER_UPDATE) {
+        return {...state,
+                filters: {
+                ...state.filters,
+                [action.payload.field]: action.payload.value
+            },
+            dogs: [],
+            currentPage: 1,
+            shouldFetchMore: true,
+        }
     }
     return state;
 };

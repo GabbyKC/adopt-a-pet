@@ -35,7 +35,7 @@ class DogInfo extends Component {
                 <Link className='back-arrow' to={{pathname: '/', state: this.props.location.state }}>
                     <FontAwesomeIcon icon={faArrowCircleLeft} />
                 </Link>
-                <div>
+                <div className='dog-info-image-container'>
                     { this.hasPhotos() ? <img className='dog-info-images' src={doggo.photos[0].full} alt="doggo" /> : <img className='dog-info-images' src={missingDoggo} alt="doggo" />}
                     <p className='introduction'>Henlo! My name is {doggo.name}</p>
                 </div>

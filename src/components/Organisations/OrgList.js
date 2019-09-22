@@ -11,6 +11,11 @@ class OrgList extends Component {
     }
     render() {
         const organizations = this.props.orgs;
+        if (organizations.length === 0) {
+            return (
+                <div className='info-loader'></div>
+            )
+        }
         console.log(organizations);
         return (
             <div className='org-list-container'>

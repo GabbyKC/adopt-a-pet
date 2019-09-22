@@ -17,7 +17,7 @@ class DogGif extends Component {
 
         let gifElement = <div className='info-loader'></div>
         if (gifUrl) {
-            gifElement = <img className='gif-image' src={gifUrl} alt="broken" />
+            gifElement = <img className='gif-image' src={gifUrl} alt="" />
         }
         return (
             <div>

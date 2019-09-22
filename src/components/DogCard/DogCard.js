@@ -16,7 +16,7 @@ class DogCard extends Component {
         return (
             <Link className={`dog-box restore-${dogId}`} to={{pathname:`/dogs/${dogId}`, state: dogId}}>
                 <div>
-                    { this.hasPhotos() ? <img src={this.props.dog.photos[0].full} alt="doggo" /> : <img src={missingImage} alt="doggo" />}
+                    { this.hasPhotos() ? <img src={this.props.dog.photos[0].full} alt="" /> : <img src={missingImage} alt="" />}
                 </div>
                 <div className='dog-name'>{this.props.dog.name}</div>
             </Link>

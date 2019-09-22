@@ -1,15 +1,19 @@
 import { Client } from "@petfinder/petfinder-js";
-import { DOGS_LOADED, DOG_CLEAR, DOGGO_LOADED, ORGS_LOADED, GIF_LOADED, GIF_CLEAR } from '../constants/action-types';
+import { DOGS_LOADED, DOG_CLEAR, DOGGO_LOADED, ORGS_LOADED, GIF_LOADED, GIF_CLEAR, FILTER_UPDATE } from '../constants/action-types';
 
 const client = new Client({apiKey: "WjqoS08v7pRPJ2offXSrIW0RaORTy296kNOjNu7l8O94y0IYTy", secret: "CTMMNXK3b8TcjiNT4GNhzeCqetoF2HZNk5c0mjF0"});
 
-export function getDogs(page = 1) {
+export function getDogs(page, filters) {
     return function(dispatch) {
-        console.log('Fetching page', page);
-        return client.animal.search({type: 'dog', location: 'hawaii', status: 'adoptable', page: page})
+        console.log('Fetching page with filters', page, filters);
+        return client.animal.search({type: 'dog', location: 'hawaii', status: 'adoptable', page: page, ...filters})
             .then(response => response.data)
             .then(json => {
-                dispatch({ type: DOGS_LOADED, payload: json });
+                if(page === 1) {
+                    dispatch({ type: DOGS_LOADED, payload: {...json, ...{replace: true}} });
+                } else {
+                    dispatch({ type: DOGS_LOADED, payload: {...json, ...{replace: false}} });
+                }
             });
     };
 }
@@ -49,5 +53,11 @@ export function getGif() {
             console.log('gifs', json);
             dispatch({ type: GIF_LOADED, payload: json[0]});
         });
+    }
+}
+
+export function updateFilter(field, value) {
+    return function(dispatch) {
+        dispatch({ type: FILTER_UPDATE, payload: {field, value} });
     }
 }
