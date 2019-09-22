@@ -32,7 +32,9 @@ class DogInfo extends Component {
         return (
             <div>
             <div className='info-container'>
-                <Link className='back-arrow' to ='/'><FontAwesomeIcon icon={faArrowCircleLeft} /></Link>
+                <Link className='back-arrow' to={{pathname: '/', state: this.props.location.state }}>
+                    <FontAwesomeIcon icon={faArrowCircleLeft} />
+                </Link>
                 <div>
                     { this.hasPhotos() ? <img className='dog-info-images' src={doggo.photos[0].full} alt="doggo" /> : <img className='dog-info-images' src={missingDoggo} alt="doggo" />}
                     <p className='introduction'>Henlo! My name is {doggo.name}</p>
@@ -47,8 +49,8 @@ class DogInfo extends Component {
                     <p><span className='headers'>House Trained:</span> {String(doggo.attributes.house_trained)}</p>
                     { description ? <p><span>{description}</span></p> : ''}
                     <p><span className='headers'>Contact Info:</span>
-                        <li><span className='headers'>Email:</span> {doggo.contact.email}</li>
-                        <li><span className='headers'>Number:</span> {doggo.contact.phone}</li>
+                        <li><span className='headers'>Email:</span> <a href="mailto:{{doggo.contact.email}}">{doggo.contact.email}</a></li>
+                        <li><span className='headers'>Number:</span> <a href="tel:{{doggo.contact.phone}}">{doggo.contact.phone}</a></li>
                     </p>
                 </div>
             </div>

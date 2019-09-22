@@ -9,10 +9,12 @@ class Footer extends Component {
     render() {
         return (
             <div className='footer'>
-                <div><Link to ='/'><FontAwesomeIcon icon={faHome} /></Link></div>
-                <div><Link to ='/org'><FontAwesomeIcon icon={faAddressBook} /></Link></div>
-                <div><Link to ='/chat'><FontAwesomeIcon icon={faComment} /></Link></div>
-                <div><Link to ='/gifs'><FontAwesomeIcon icon={faDog} /></Link></div>
+                <Link to={{pathname: '/', state: null}}>
+                    <FontAwesomeIcon icon={faHome} />
+                </Link>
+                <Link to ='/org'><FontAwesomeIcon icon={faAddressBook} /></Link>
+                <Link to ='/chat'><FontAwesomeIcon icon={faComment} /></Link>
+                <Link to ='/gifs'><FontAwesomeIcon icon={faDog} /></Link>
             </div>
         )
     }
