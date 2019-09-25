@@ -32,7 +32,7 @@ class DogGif extends Component {
 }
 
 const mapStateToProps = state => {
-  return { gif: state.dogGif };
+  return { gif: state.animals.dogGif };
 };
 
 const mapDispatchToProps = dispatch => ({

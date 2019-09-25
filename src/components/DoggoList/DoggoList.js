@@ -54,7 +54,7 @@ class DoggoList extends Component {
 }
 
 const mapStateToProps = state => {
-    return { dogs: state.dogs, filters: state.filters, currentPage: state.currentPage, shouldFetchMore: state.shouldFetchMore };
+    return { dogs: state.animals.dogs, filters: state.animals.filters, currentPage: state.animals.currentPage, shouldFetchMore: state.animals.shouldFetchMore };
 };
 
 const mapDispatchToProps = dispatch => ({

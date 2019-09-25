@@ -60,7 +60,7 @@ class DogInfo extends Component {
 }
 
 const mapStateToProps = state => {
-  return { dog: state.singleDoggo };
+  return { dog: state.animals.singleDoggo };
 };
 
 const mapDispatchToProps = dispatch => ({

@@ -35,7 +35,7 @@ class OrgList extends Component {
 }
 
 const mapStateToProps = state => {
-  return { orgs: state.orgs };
+  return { orgs: state.animals.orgs };
 };
 
 const mapDispatchToProps = dispatch => ({
