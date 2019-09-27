@@ -5,3 +5,6 @@ export const GIF_LOADED = "GIF_LOADED";
 export const GIF_CLEAR = "GIF_CLEAR";
 export const DOG_CLEAR = "DOG_CLEAR";
 export const FILTER_UPDATE = "FILTER_UPDATE";
+export const MESSAGES_LOADED = "MESSAGES_LOADED";
+export const USER_LOGGED_IN = "USER_LOGGED_IN";
+export const USER_LOGGED_OUT = "USER_LOGGED_OUT";

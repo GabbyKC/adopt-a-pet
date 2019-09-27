@@ -1,7 +1,89 @@
 import { Client } from "@petfinder/petfinder-js";
-import { DOGS_LOADED, DOG_CLEAR, DOGGO_LOADED, ORGS_LOADED, GIF_LOADED, GIF_CLEAR, FILTER_UPDATE } from '../constants/action-types';
+import { DOGS_LOADED, DOG_CLEAR, DOGGO_LOADED, ORGS_LOADED, GIF_LOADED, GIF_CLEAR, FILTER_UPDATE, MESSAGES_LOADED, USER_LOGGED_IN, USER_LOGGED_OUT } from '../constants/action-types';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/database';
 
 const client = new Client({apiKey: "WjqoS08v7pRPJ2offXSrIW0RaORTy296kNOjNu7l8O94y0IYTy", secret: "CTMMNXK3b8TcjiNT4GNhzeCqetoF2HZNk5c0mjF0"});
+const provider = new firebase.auth.GoogleAuthProvider();
+
+export function setupAuth() {
+    return function(dispatch) {
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                console.log('Current user', user);
+                dispatch({type: USER_LOGGED_IN, payload: {
+                    name: user.displayName,
+                    email: user.email
+                }})
+            } else {
+                console.log('No user is logged in');
+                dispatch({ type: USER_LOGGED_OUT })
+            }
+        });
+
+        firebase
+            .auth()
+            .getRedirectResult()
+            .then(function(result) {
+                const user = result.user;
+                if (user) {
+                    console.log('You are logged in', user);
+                    dispatch({type: USER_LOGGED_IN, payload: {
+                        name: user.displayName,
+                        email: user.email
+                    }})
+                    dispatch(getPosts());
+                }
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    }
+}
+
+export function logInFirebase() {
+    return function(dispatch) {
+        firebase
+            .auth()
+            .signInWithRedirect(provider);
+    };
+}
+
+export function postMessageToFirebase(data) {
+    return function(dispatch) {
+        // Get a key for a new Post.
+        let newPostKey = firebase
+            .database()
+            .ref()
+            .child("messages")
+            .push().key;
+
+        let updates = {};
+        updates["/messages/" + newPostKey] = data;
+
+        return firebase
+            .database()
+            .ref()
+            .update(updates);
+    }
+}
+
+function getPosts() {
+    return function(dispatch) {
+        firebase
+            .database()
+            .ref("messages/")
+            .on("value", messages => {
+                let obj = messages.val();
+                console.log('Messages', obj);
+                let results = Object.keys(messages.val()).map(function(key) {
+                    return {id: key, data: obj[key]}
+                });
+                dispatch({ type: MESSAGES_LOADED, payload: results });
+            });
+    };
+}
 
 export function getDogs(page, filters) {
     return function(dispatch) {

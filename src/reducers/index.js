@@ -1,13 +1,17 @@
-import { combineReducers } from 'redux'
-import { firebaseReducer } from 'react-redux-firebase'
+import { combineReducers } from 'redux';
+import { firebaseReducer } from 'react-redux-firebase';
 
-import { reducer as animalsReducer, initialState as animalsInitialState } from './animals'
+import { reducer as animalsReducer, initialState as animalsInitialState } from './animals';
+import { reducer as authReducer, initialState as authInitialState } from './auth';
+
 
 export const initialState = {
-    animals: animalsInitialState
+    animals: animalsInitialState,
+    auth: authInitialState,
 };
 
 export const rootReducer = combineReducers({
   firebase: firebaseReducer,
-  animals: animalsReducer
+  animals: animalsReducer,
+  auth: authReducer,
 })

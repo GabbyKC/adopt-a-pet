@@ -59,7 +59,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
     onLoad: (pageNumber, filters) => dispatch(getDogs(pageNumber, filters)),
-    updateFilter: (field, value) => dispatch(updateFilter(field, value))
+    updateFilter: (field, value) => dispatch(updateFilter(field, value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DoggoList);

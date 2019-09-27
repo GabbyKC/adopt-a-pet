@@ -1,4 +1,4 @@
-import { DOGS_LOADED, ORGS_LOADED, DOGGO_LOADED, DOG_CLEAR, GIF_LOADED, GIF_CLEAR, FILTER_UPDATE } from '../constants/action-types';
+import { DOGS_LOADED, ORGS_LOADED, DOGGO_LOADED, DOG_CLEAR, GIF_LOADED, GIF_CLEAR, FILTER_UPDATE, MESSAGES_LOADED } from '../constants/action-types';
 
 export const initialState = {
     dogs: [],
@@ -11,6 +11,7 @@ export const initialState = {
       size: '',
       age: '',
     },
+    messages: [],
 };
 
 export function reducer(state = initialState, action) {
@@ -46,6 +47,9 @@ export function reducer(state = initialState, action) {
             currentPage: 1,
             shouldFetchMore: true,
         }
+    }
+    if (action.type === MESSAGES_LOADED) {
+        return {...state, messages: action.payload}
     }
     return state;
 };

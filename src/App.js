@@ -5,7 +5,7 @@ import './App.css';
 import Homepage from './components/Homepage/Homepage';
 import DogInfo from './components/DogInfo/DogInfo';
 import OrgPage from './components/Organisations/OrgPage';
-import Chat from './components/Chat/Chat';
+import ChatPage from './components/Chat/ChatPage';
 import DogGif from './components/DogGif/DogGif';
 
 
@@ -16,7 +16,7 @@ function App() {
             <Route exact path="/" component={Homepage} />
             <Route exact path="/dogs/:dogId" component={DogInfo} />
             <Route exact path="/org" component={OrgPage} />
-            <Route exact path="/chat" component={Chat} />
+            <Route exact path="/chat" component={ChatPage} />
             <Route exact path="/gifs" component={DogGif} />
           </div>
       </Router>
