@@ -15,7 +15,8 @@ export function setupAuth() {
                 dispatch({type: USER_LOGGED_IN, payload: {
                     name: user.displayName,
                     email: user.email
-                }})
+                }});
+                dispatch(getPosts());
             } else {
                 console.log('No user is logged in');
                 dispatch({ type: USER_LOGGED_OUT })
@@ -50,8 +51,9 @@ export function logInFirebase() {
     };
 }
 
-export function postMessageToFirebase(data) {
+export function postMessageToFirebase(message, user) {
     return function(dispatch) {
+        console.log('Posting message', message);
         // Get a key for a new Post.
         let newPostKey = firebase
             .database()
@@ -59,8 +61,14 @@ export function postMessageToFirebase(data) {
             .child("messages")
             .push().key;
 
+        let newMessage = {
+            created: new Date(),
+            content: message,
+            name: user,
+        }
+
         let updates = {};
-        updates["/messages/" + newPostKey] = data;
+        updates["/messages/" + newPostKey] = newMessage;
 
         return firebase
             .database()
@@ -78,7 +86,7 @@ function getPosts() {
                 let obj = messages.val();
                 console.log('Messages', obj);
                 let results = Object.keys(messages.val()).map(function(key) {
-                    return {id: key, data: obj[key]}
+                    return {id: key, content: obj[key].content, created: obj[key].created, name: obj[key].name }
                 });
                 dispatch({ type: MESSAGES_LOADED, payload: results });
             });

@@ -19,7 +19,7 @@ class OrgList extends Component {
         console.log(organizations);
         return (
             <div className='org-list-container'>
-                <p className='heading'>Rescue Groups we work with:</p>
+                <h2 className='heading'>Rescue Groups we work with:</h2>
                 <div className='list-contents'>
                     <ul>
                     {organizations.map((org, index) => {
