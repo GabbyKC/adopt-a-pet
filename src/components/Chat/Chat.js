@@ -21,6 +21,11 @@ class Chat extends Component {
         this.setState({ message: event.target.value });
     }
 
+    submitMessage() {
+        this.props.submitMessageToFirebase(this.state.message, this.props.loggedInUser.name);
+        this.setState({ message: ''});
+    }
+
     render() {
         const messages = this.props.messages;
         const isLoggedIn = this.props.isLoggedIn;
@@ -44,7 +49,7 @@ class Chat extends Component {
                             <input className='chat-input' type="text" placeholder='Write your message here...' value={this.state.message} onChange={(e) => this.handleChange(e)} />
                         </div>
                         <div>
-                            { this.state.message !== '' ?  <button type='submit' className='chat-submit' onClick={() => this.props.submitMessage(this.state.message, loggedInUser.name)}>Submit</button> : ''}
+                            { this.state.message !== '' ?  <button type='submit' className='chat-submit' onClick={() => this.submitMessage()}>Submit</button> : ''}
                         </div>
                     </div>
                 </div>
@@ -64,7 +69,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
     login: () => dispatch(logInFirebase()),
-    submitMessage: (message, user) => dispatch(postMessageToFirebase(message, user)),
+    submitMessageToFirebase: (message, user) => dispatch(postMessageToFirebase(message, user)),
     setupAuth: () => dispatch(setupAuth()),
 });
 
