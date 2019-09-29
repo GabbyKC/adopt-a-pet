@@ -13,7 +13,6 @@ class DoggoList extends Component {
         return (
             <div>
                 <div className='filter-container'>
-                    <div className='filter-header'>Filters: </div>
                     <select value={this.props.filters.size} onChange={(e) => this.props.updateFilter('size', e.target.value)}>
                         <option value=''>All Sizes</option>
                         <option value='small'>Small</option>

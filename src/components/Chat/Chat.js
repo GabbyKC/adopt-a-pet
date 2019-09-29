@@ -1,9 +1,14 @@
 import React, {Component} from 'react';
 import { connect } from "react-redux";
-import { logInFirebase, postMessageToFirebase, setupAuth } from '../../actions';
+import { logInFirebase, logoutFirebase, postMessageToFirebase, setupAuth } from '../../actions';
 import Timestamp from 'react-timestamp';
-
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { fas, faHome, faMapMarker } from '@fortawesome/free-solid-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 import './Chat.css';
+
+library.add( fab, fas, faHome, faMapMarker)
 
 class Chat extends Component {
     constructor(props) {
@@ -35,14 +40,19 @@ class Chat extends Component {
             return (
                 <div>
                     <div className='chat-container'>
-                    <h2 className='heading'>Doggo Chat Room</h2>
-                    {messages.map((message, index) => {
-                        return (
-                            <div key={message.id} className='chat-box'>
-                                <p> <span className='chat-timestamp'><Timestamp date={message.created} />:</span> <span className='chat-content'>{message.content}</span> <br/> from <span className='chat-name'>{message.name}</span> </p>
-                            </div>
-                        )
-                    })}
+                        <h2 className='heading'>Doggo Chat Room</h2>
+                        <div className='messages-container'>
+                        <div className='google-button-container'>
+                        <button className='google-button logout' type='button' onClick={() => this.props.logout()}> <FontAwesomeIcon icon={['fab','google']} /> Log Out</button>
+                        </div>
+                        {messages.map((message, index) => {
+                            return (
+                                <div key={message.id} className='chat-box'>
+                                    <p> <span className='chat-timestamp'><Timestamp date={message.created} />:</span> <span className='chat-content'>{message.content}</span> <br/> from <span className='chat-name'>{message.name}</span> </p>
+                                </div>
+                            )
+                        })}
+                        </div>
                     </div>
                     <div className='chat-submit-container'>
                         <div className='flex-chat'>
@@ -56,8 +66,12 @@ class Chat extends Component {
             )
         }
         return (
-            <div>
-                <button type='button' onClick={() => this.props.login()}>Login with Google</button>
+            <div className='chat-container'>
+                <h2 className='heading'>Doggo Chat Room</h2>
+                <p className='chat-intro'>To view and post comments, please log in via Google.</p>
+                <div className='google-button-container'>
+                    <button className='google-button' type='button' onClick={() => this.props.login()}> <FontAwesomeIcon icon={['fab','google']} /> Log in with Google</button>
+                </div>
             </div>
         )
     }
@@ -69,6 +83,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
     login: () => dispatch(logInFirebase()),
+    logout: () => dispatch(logoutFirebase()),
     submitMessageToFirebase: (message, user) => dispatch(postMessageToFirebase(message, user)),
     setupAuth: () => dispatch(setupAuth()),
 });

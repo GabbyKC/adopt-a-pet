@@ -35,7 +35,7 @@ select {
 @media only screen and (max-width: 500px) {
     .dogs-container {
         flex-direction: column;
-        margin: 20px 0px;
+        margin: 20px 0px 50px 0px;
     }
 }
 
@@ -56,5 +56,8 @@ select {
         width: 1000px;
         margin: auto;
         margin-bottom: 100px;
+    }
+    select {
+        width: 200px;
     }
 }

@@ -22,9 +22,11 @@ class DogGif extends Component {
         return (
             <div>
                 <Header />
-                <p className='doggo-gif'>Doggo Gifs for your enjoyment</p>
-                <div className='gif-button-container'><button className="button" onClick={this.props.onLoad}>Another</button></div>
-                {gifElement}
+                <div className='gif-content'>
+                    <h2 className='heading'>Doggo Gifs</h2>
+                    <div className='gif-button-container'><button className="button" onClick={this.props.onLoad}>Another</button></div>
+                    {gifElement}
+                </div>
                 <Footer />
             </div>
         )

@@ -51,6 +51,14 @@ export function logInFirebase() {
     };
 }
 
+export function logoutFirebase() {
+    return function(dispatch) {
+        firebase
+            .auth()
+            .signOut()
+    };
+}
+
 export function postMessageToFirebase(message, user) {
     return function(dispatch) {
         console.log('Posting message', message);
