@@ -37,7 +37,7 @@ class DoggoList extends Component {
                         loader={<div className="loader" key={0}>Fetching doggos...</div>}
                         useWindow={true}
                     >
-
+                    {(this.props.filters.size !== '' || this.props.filters.age !== '') && doggos.length === 0 && this.props.shouldFetchMore === false ? <div className='loader no-matches'>Sorry, no doggos matching your request</div> : console.log('all is good')}
                     <div className='dogs-container'>
                         {doggos.map((dog, index) => {
                             return (

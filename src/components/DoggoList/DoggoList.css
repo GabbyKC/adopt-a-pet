@@ -32,10 +32,14 @@ select {
     color: #834f95;
 }
 
+.no-matches {
+    margin: 30px;
+}
+
 @media only screen and (max-width: 500px) {
     .dogs-container {
         flex-direction: column;
-        margin: 20px 0px 50px 0px;
+        margin: 0px 0px 50px 0px;
     }
 }
 
