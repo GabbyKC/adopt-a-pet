@@ -98,6 +98,7 @@ function getPosts() {
                 });
                 dispatch({ type: MESSAGES_LOADED, payload: results });
             });
+            console.log('getting posts');
     };
 }
 
