@@ -4,7 +4,6 @@
 
 .chat-timestamp {
     font-weight: bold;
-    background-color: #f0c6ee;
 }
 
 .chat-name {
@@ -15,8 +14,7 @@
     background-color: white;
     border: 1px solid white;
     margin-bottom: 20px;
-    border: 1px solid white;
-    border-radius: 5%;
+    padding: 5px;
 }
 
 .chat-content {
@@ -40,6 +38,7 @@
     border: none;
     border-bottom: 1px solid #834f95;
     font-size: 18px;
+    border-radius: unset;
 }
 
 .chat-input:focus {
@@ -56,7 +55,7 @@
 }
 
 .google-button {
-    background-color: #fafbaa;
+    background-color: #f7f7c7;
     width: 100%;
     font-size: 18px;
     padding: 5px;
