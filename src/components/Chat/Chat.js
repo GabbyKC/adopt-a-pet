@@ -36,7 +36,13 @@ class Chat extends Component {
         const isLoggedIn = this.props.isLoggedIn;
         const loggedInUser = this.props.loggedInUser;
 
-        if (isLoggedIn && loggedInUser) {
+        if (isLoggedIn && messages.length === 0) {
+            return (
+                <div className='info-loader'></div>
+            )
+        }
+
+        if (isLoggedIn && loggedInUser && messages.length !== 0) {
             return (
                 <div>
                     <div className='chat-container'>
