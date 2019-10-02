@@ -67,6 +67,10 @@
     margin: 0px 0px 20px 0px;
 }
 
+.scroll-to-bottom {
+    height: 600px;
+}
+
 @media only screen and (min-width: 668px) {
     .messages-container {
         width: 700px;

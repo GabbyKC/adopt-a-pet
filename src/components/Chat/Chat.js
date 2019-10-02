@@ -6,6 +6,8 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fas, faHome, faMapMarker } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
+import ScrollToBottom from 'react-scroll-to-bottom';
+
 import './Chat.css';
 
 library.add( fab, fas, faHome, faMapMarker)
@@ -45,6 +47,7 @@ class Chat extends Component {
         if (isLoggedIn && loggedInUser && messages.length !== 0) {
             return (
                 <div>
+                    <ScrollToBottom className='scroll-to-bottom'>
                     <div className='chat-container'>
                         <h2 className='heading'>Doggo Chat Room</h2>
                         <div className='messages-container'>
@@ -68,6 +71,7 @@ class Chat extends Component {
                             { this.state.message !== '' ?  <button type='submit' className='chat-submit' onClick={() => this.submitMessage()}>Submit</button> : ''}
                         </div>
                     </div>
+                    </ScrollToBottom>
                 </div>
             )
         }
