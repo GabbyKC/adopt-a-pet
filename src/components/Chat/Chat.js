@@ -51,9 +51,9 @@ class Chat extends Component {
                     <div className='chat-container'>
                         <h2 className='heading'>Doggo Chat Room</h2>
                         <div className='messages-container'>
-                        <div className='google-button-container'>
-                        <button className='google-button logout' type='button' onClick={() => this.props.logout()}> <FontAwesomeIcon icon={['fab','google']} /> Log Out</button>
-                        </div>
+                            <div className='google-button-container'>
+                                <button className='google-button logout' type='button' onClick={() => this.props.logout()}> <FontAwesomeIcon icon={['fab','google']} /> Log Out</button>
+                            </div>
                         {messages.map((message, index) => {
                             return (
                                 <div key={message.id} className='chat-box'>
@@ -63,6 +63,7 @@ class Chat extends Component {
                         })}
                         </div>
                     </div>
+                    </ScrollToBottom>
                     <div className='chat-submit-container'>
                         <div className='flex-chat'>
                             <input className='chat-input' type="text" placeholder='Write your message here...' value={this.state.message} onChange={(e) => this.handleChange(e)} />
@@ -71,7 +72,6 @@ class Chat extends Component {
                             { this.state.message !== '' ?  <button type='submit' className='chat-submit' onClick={() => this.submitMessage()}>Submit</button> : ''}
                         </div>
                     </div>
-                    </ScrollToBottom>
                 </div>
             )
         }
