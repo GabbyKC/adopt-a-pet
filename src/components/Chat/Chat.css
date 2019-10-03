@@ -69,6 +69,7 @@
 
 .scroll-to-bottom {
     height: 600px;
+    width: 100%;
 }
 
 @media only screen and (min-width: 668px) {
