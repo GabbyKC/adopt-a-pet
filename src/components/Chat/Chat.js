@@ -46,8 +46,8 @@ class Chat extends Component {
 
         if (isLoggedIn && loggedInUser && messages.length !== 0) {
             return (
+                <ScrollToBottom className='scroll-to-bottom'>
                 <div>
-                    <ScrollToBottom className='scroll-to-bottom'>
                     <div className='chat-container'>
                         <h2 className='heading'>Doggo Chat Room</h2>
                         <div className='messages-container'>
@@ -63,7 +63,6 @@ class Chat extends Component {
                         })}
                         </div>
                     </div>
-                    </ScrollToBottom>
                     <div className='chat-submit-container'>
                         <div className='flex-chat'>
                             <input className='chat-input' type="text" placeholder='Write your message here...' value={this.state.message} onChange={(e) => this.handleChange(e)} />
@@ -73,6 +72,7 @@ class Chat extends Component {
                         </div>
                     </div>
                 </div>
+            </ScrollToBottom>
             )
         }
         return (
