@@ -105,7 +105,7 @@ function getPosts() {
 export function getDogs(page, filters) {
     return function(dispatch) {
         console.log('Fetching page with filters', page, filters);
-        return client.animal.search({type: 'dog', location: 'alaska', status: 'adoptable', page: page, ...filters})
+        return client.animal.search({type: 'dog', location: 'hawaii', status: 'adoptable', page: page, ...filters})
             .then(response => response.data)
             .then(json => {
                 if(page === 1) {
@@ -119,7 +119,7 @@ export function getDogs(page, filters) {
 
 export function getOrgs() {
     return function(dispatch) {
-        return client.organization.search({state: 'ak'})
+        return client.organization.search({state: 'hi'})
             .then(response => response.data)
             .then(json => {
                 dispatch({ type: ORGS_LOADED, payload: json });
