@@ -21,7 +21,7 @@ firebase.initializeApp(firebaseConfig);
 const config = {
   userProfile: 'users', // firebase root where user profiles are stored
   enableLogging: false, // enable/disable Firebase's database logging
-}
+};
 
 const middlewareEnhancer = applyMiddleware(thunk);
 const reduxEnhancer = reactReduxFirebase(firebase, config);

@@ -35,16 +35,15 @@ class Chat extends Component {
 
     render() {
         const messages = this.props.messages;
-        const isLoggedIn = this.props.isLoggedIn;
         const loggedInUser = this.props.loggedInUser;
 
-        if (isLoggedIn && messages.length === 0) {
+        if (loggedInUser && messages.length === 0) {
             return (
                 <div className='info-loader'></div>
             )
         }
 
-        if (isLoggedIn && loggedInUser && messages.length !== 0) {
+        if (loggedInUser && messages.length !== 0) {
             return (
                 <ScrollToBottom className='scroll-to-bottom'>
                 <div>
@@ -88,7 +87,7 @@ class Chat extends Component {
 }
 
 const mapStateToProps = state => {
-    return { messages: state.animals.messages, isLoggedIn: state.auth.isLoggedIn, loggedInUser: state.auth.user };
+    return { messages: state.animals.messages, loggedInUser: state.auth.user };
 };
 
 const mapDispatchToProps = dispatch => ({

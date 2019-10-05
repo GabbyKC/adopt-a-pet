@@ -9,6 +9,7 @@ class Footer extends Component {
     render() {
         return (
             <div className='footer'>
+                {/*passing state: null so that we can scroll to top from homepage component*/}
                 <NavLink exact={true} activeClassName='active' to={{pathname: '/', state: null}}>
                     <FontAwesomeIcon icon={faHome} />
                 </NavLink>

@@ -8,7 +8,6 @@ import OrgPage from './components/Organisations/OrgPage';
 import ChatPage from './components/Chat/ChatPage';
 import DogGif from './components/DogGif/DogGif';
 
-
 function App() {
   return (
       <Router>

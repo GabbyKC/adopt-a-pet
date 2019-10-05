@@ -33,7 +33,7 @@ export function setupAuth() {
                     dispatch({type: USER_LOGGED_IN, payload: {
                         name: user.displayName,
                         email: user.email
-                    }})
+                    }});
                     dispatch(getPosts());
                 }
             })
@@ -73,7 +73,7 @@ export function postMessageToFirebase(message, user) {
             created: new Date(),
             content: message,
             name: user,
-        }
+        };
 
         let updates = {};
         updates["/messages/" + newPostKey] = newMessage;
