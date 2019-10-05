@@ -13,7 +13,7 @@ class Homepage extends Component {
         );
 
         if (item) {
-            item.scrollIntoView();
+            item.scrollIntoView({block: 'center'});
         }
     }
 
